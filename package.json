@@ -1,14 +1,27 @@
 {
   "name": "fokusin",
   "version": "1.0.0",
-  "description": "",
+  "description": "features of categories, goals, milestones and progress",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
-  "author": "",
+  "author": "Alya",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
-  }
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "pg": "^8.5.1",
+    "sequelize": "^6.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/synrgy-mini-project-batch-2/team-b/backend.git"
+  },
+  "bugs": {
+    "url": "https://gitlab.com/synrgy-mini-project-batch-2/team-b/backend/issues"
+  },
+  "homepage": "https://gitlab.com/synrgy-mini-project-batch-2/team-b/backend#readme"
 }
