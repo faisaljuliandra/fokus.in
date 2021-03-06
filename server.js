@@ -11,12 +11,12 @@ app.use(bodyParser.json())
 app.use(express.static('views'))
 
 
-app.use('/', require('./route/indexRoute'))
-app.use('/categories', require('./route/categoryRoute'))
-app.use('/goals', require('./route/goalsRoute'))
-app.use('/milestone', require('./route/milestoneRoute'))
+app.use('/', require('./routes/indexRoute'))
+app.use('/categories', require('./routes/categoryRoute'))
+app.use('/goals', require('./routes/goalsRoute'))
+app.use('/milestone', require('./routes/milestoneRoute'))
 app.use('/usercategory', require('./routes/userCategoryRoute'))
-app.use('/usergoals', require('./route/userGoalsRoute'))
+app.use('/usergoals', require('./routes/userGoalsRoute'))
 app.use('/userprogress', require('./routes/userProgressMilestoneRoute'))
 
 

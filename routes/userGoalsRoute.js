@@ -1,5 +1,5 @@
 const express = require('express')
-const UserGoalsController = require('../controllers/usergoalsController')
+const UserGoalsController = require('../controllers/userGoalsController')
 const passport = require('../middleware/passportMiddleware')
 
 const userGoals = new UserGoalsController()

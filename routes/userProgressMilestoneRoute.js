@@ -2,7 +2,7 @@ const express = require('express')
 const UserProgressMilestoneController = require('../controllers/userProgressMilestoneController')
 const passport = require('../middleware/passportMiddleware')
 
-const userProgressMilestone = new UserGoalsController()
+const userProgressMilestone = new UserProgressMilestoneController()
 const restrict = passport.authenticate('jwt', {
     session: false
 }) 
