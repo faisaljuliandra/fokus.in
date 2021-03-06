@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Milestones.hasOne(models.Goals, { foreignKey: 'id' })
-      Milestones.hasMany(models.UserGoals, {through: 'userProgressMilestones', as:'progress', foreignKey: 'milestonesId'})
+      Milestones.belongsToMany(models.UserGoals, {through: 'userProgressMilestones', as:'progress', foreignKey: 'id'})
     }
   };
   Milestones.init({
