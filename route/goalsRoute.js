@@ -1,9 +1,7 @@
 const express = require('express')
-const GoalsController = require('../controllers/goalsController')
-const CategoryController = require('../controllers/categoryController')
+const GoalsController = require('../controller/goalsController')
 const passport = require('../middleware/passportMiddleware')
 const verifyRole = require('../middleware/roleMiddleware')
-const { Op, Sequelize } = require('sequelize');
 
 const goals = new GoalsController()
 const restrict = passport.authenticate('jwt', { 

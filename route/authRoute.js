@@ -1,5 +1,5 @@
 const express = require('express')
-const UserController = require('../controllers/userController')
+const UserController = require('../controller/userController')
 const { validateRegister, validateLogin } = require('../validator/validators')
 const { validationResult } = require('express-validator')
 const users = new UserController()
