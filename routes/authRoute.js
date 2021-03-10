@@ -1,12 +1,9 @@
 const express = require('express')
-const UserController = require('../controller/userController')
+const UserController = require('../controllers/userController')
 const { validateRegister, validateLogin } = require('../validator/validators')
-const { isUserExist } = require("../function/functions")
 const { validationResult } = require('express-validator')
-const db_user = require('../database/db_user')
 const users = new UserController()
 const app = express.Router()
-const db = require('../database/db_user')
 const passport = require('passport')
 
 app.post('/register', validateRegister, async (req, res) => {
@@ -18,16 +15,8 @@ app.post('/register', validateRegister, async (req, res) => {
             messages: errors.array().map(obj => `${obj.param} = ${obj.msg}`)
         })
     } else {
-        if (isUserExist(db_user, req.body.username)) {
-            res.status(400).json({
-                status: "400 Bad Request",
-                message: "username already exists"
-            })
-        } else {
-            db.push(req.body)
-            const result = await users.register(username, password, nama, email, jenisKelamin, noTelp, role, goalId, taskListId)
-            res.send(result)
-        }
+        const result = await users.register(username, password, nama, email, jenisKelamin, noTelp, role, goalId, taskListId)
+        res.send(result)
     }
 })
 
@@ -59,8 +48,8 @@ app.post('/login/admin', validateLogin, async (req, res) => {
             status: "401 Unauthorized",
             messages: errors.array().map(obj => `${obj.param} = ${obj.msg}`)
         })
-    } else if (username == "admin002") {
-        const result = await users.login(username, password)
+    } else if ("admin") {
+        const result = await users.loginAdmin(username, password)
         res.send(result)
     } else {
         res.send("log in to admin first")

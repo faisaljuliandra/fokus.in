@@ -10,12 +10,12 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      UserProgressMilestones.hasOne(models.UserGoals, { foreignKey: 'id' })
-      UserProgressMilestones.hasOne(models.Milestones, { foreignKey: 'id' })
+      UserProgressMilestones.belongsTo(models.UserGoals, { foreignKey: 'id' })
+      UserProgressMilestones.belongsTo(models.Milestones, { foreignKey: 'id' })
     }
   };
   UserProgressMilestones.init({
-    milestonesId: DataTypes.STRING,
+    MilestoneId: DataTypes.STRING,
     userGoalsId: DataTypes.STRING,
     isFinished: DataTypes.BOOLEAN
   }, {

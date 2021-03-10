@@ -27,8 +27,8 @@ module.exports = {
       endGoal: {
         type: Sequelize.DATE
       },
-      status: {
-        type: Sequelize.STRING(20)
+      isEnrolled: {
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,

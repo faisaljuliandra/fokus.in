@@ -7,7 +7,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.STRING(22)
       },
-      milestonesId: {
+      MilestoneId: {
         type: Sequelize.STRING(22),
         references: {
           model: 'Milestones',

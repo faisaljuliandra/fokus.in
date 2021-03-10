@@ -12,12 +12,12 @@ app.use(express.static('views'))
 
 
 app.use('/', require('./routes/indexRoute'))
-app.use('/categories', require('./routes/categoryRoute'))
+app.use('/', require('./routes/authRoute'))
+app.use('/category', require('./routes/categoryRoute'))
 app.use('/goals', require('./routes/goalsRoute'))
 app.use('/milestone', require('./routes/milestoneRoute'))
-app.use('/usercategory', require('./routes/userCategoryRoute'))
-app.use('/usergoals', require('./routes/userGoalsRoute'))
-app.use('/userprogress', require('./routes/userProgressMilestoneRoute'))
+
+
 
 
 app.use(function (error, req, res, next) {
