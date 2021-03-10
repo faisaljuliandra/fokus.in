@@ -16,7 +16,6 @@ app.get('/', restrict, async (req, res, next) => {
     try {
         const { category } = req.query
         const goalsDisplay = await goals.findCategory(category)
-        console.log(goalsDisplay);
         if (goalsDisplay.length == 0) {
             return res.status(303).json({
                 message: 'The goal is empty! Please check another category',
