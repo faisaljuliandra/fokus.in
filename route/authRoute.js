@@ -2,9 +2,9 @@ const express = require('express')
 const UserController = require('../controller/userController')
 const { validateRegister, validateLogin } = require('../validator/validators')
 const { validationResult } = require('express-validator')
+const jwt = require('jsonwebtoken')
 const users = new UserController()
 const app = express.Router()
-const passport = require('passport')
 
 app.post('/register', validateRegister, async (req, res) => {
     const { username, password, nama, email, jenisKelamin, noTelp, role, goalId, taskListId } = req.body
@@ -21,8 +21,6 @@ app.post('/register', validateRegister, async (req, res) => {
 })
 
 app.post('/login', validateLogin, async (req, res) => {
-    passport.session.authenticated = true
-    passport.session.username = req.body.username
     const errors = validationResult(req)
     const { username, password } = req.body
     if (!errors.isEmpty()) {
@@ -32,15 +30,13 @@ app.post('/login', validateLogin, async (req, res) => {
         })
     } else if (username, password) {
         const result = await users.login(username, password)
-        res.send(result)
+        res.cookie('access_token', jwt.sign({ id: users.id }, process.env.JWT_SECRET)).send(result)
     } else {
         res.send("wrong username or password")
     } //butuh handle error kalo 2 2 nya salah
 })
 
 app.post('/login/admin', validateLogin, async (req, res) => {
-    passport.session.authenticated = true
-    passport.session.username = req.body.username
     const errors = validationResult(req)
     const { username, password } = req.body
     if (!errors.isEmpty()) {
@@ -50,15 +46,15 @@ app.post('/login/admin', validateLogin, async (req, res) => {
         })
     } else if ("admin") {
         const result = await users.loginAdmin(username, password)
-        res.send(result)
+        res.cookie('access_token', jwt.sign({ id: users.id }, process.env.JWT_SECRET)).send(result)
     } else {
         res.send("log in to admin first")
     }
 })
 
 app.post('/logout', async (req, res) => {
-    if (await passport.session.authenticated) {
-        passport.session = null
+    if (await req.cookies.access_token) {
+        res.clearCookie('access_token');
         res.status(200).json({
             message: "Log out succesful"
         })
