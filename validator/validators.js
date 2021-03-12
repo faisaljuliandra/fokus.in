@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const { body } = require('express-validator');
 
 exports.validateRegister = [
@@ -17,7 +16,6 @@ exports.validateLogin = [
     body('password', 'Cannot be empty').notEmpty(),
     body('password', 'Must a string').isString()
 ]
-=======
 const { body } = require('express-validator');
 
 exports.validateRegister = [
@@ -36,4 +34,3 @@ exports.validateLogin = [
     body('password', 'Cannot be empty').notEmpty(),
     body('password', 'Must a string').isString()
 ]
->>>>>>> feature/categories-goals-milestone
