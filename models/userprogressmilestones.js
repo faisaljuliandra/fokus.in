@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 'use strict';
 const {
   Model
@@ -23,4 +24,31 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'UserProgressMilestones',
   });
   return UserProgressMilestones;
+=======
+'use strict';
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class UserProgressMilestones extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      UserProgressMilestones.belongsTo(models.UserGoals, { foreignKey: 'id' })
+      UserProgressMilestones.belongsTo(models.Milestones, { foreignKey: 'id' })
+    }
+  };
+  UserProgressMilestones.init({
+    MilestoneId: DataTypes.STRING,
+    userGoalsId: DataTypes.STRING,
+    isFinished: DataTypes.BOOLEAN
+  }, {
+    sequelize,
+    modelName: 'UserProgressMilestones',
+  });
+  return UserProgressMilestones;
+>>>>>>> feature/categories-goals-milestone
 };

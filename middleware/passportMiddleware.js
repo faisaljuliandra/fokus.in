@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const passport = require('passport')
 const { Strategy, ExtractJwt } = require('passport-jwt')
 const { Users } = require('../models')
@@ -14,3 +15,21 @@ passport.use(
 )
 
 module.exports = passport
+=======
+const passport = require('passport')
+const { Strategy, ExtractJwt } = require('passport-jwt')
+const { Users } = require('../models')
+
+passport.use(
+    new Strategy({
+        jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+        secretOrKey: process.env.JWT_SECRET,
+    }, (payload, done) => {
+        Users.findByPk(payload.id)
+            .then(user => done(null, user))
+            .catch(err => done(err, false))
+    })
+)
+
+module.exports = passport
+>>>>>>> feature/categories-goals-milestone
