@@ -73,7 +73,7 @@ app.put('/:id', restrict, async (req, res, next) => {
         })
         res.status(201).json({
             success: true,
-            message: `Update id = '${id}' berhasil`,
+            message: `List dengan id = '${id}' berhasil di update`,
             data: result
         })
     }catch(error){
@@ -87,7 +87,7 @@ app.delete('/:id', restrict, async (req, res, next) => {
         const result = await taskLists.remove(id)
         res.status(200).json({
             success: true,
-            message: `id = '${id}' Telah Dihapus`,
+            message: `Tasklist dengan id = '${id}' Telah Dihapus`,
             data: result
           })      
     }catch (error) {

@@ -48,7 +48,7 @@ app.post('/add', restrict, async (req, res, next) => {
         })
         res.status(201).json({
             success: true,
-            message: 'Sukses menambahkan data',
+            message: 'Sukses menambahkan data diskusi',
             data: result
         })
     }catch(error){
@@ -69,7 +69,7 @@ app.put('/:id', restrict, async (req, res, next) => {
         })
         res.status(201).json({
             success: true,
-            message: `Update id = '${id}' berhasil`,
+            message: `Update diskusi dengan id = '${id}' berhasil`,
             data: result
         })
     }catch(error){
@@ -83,7 +83,7 @@ app.delete('/:id', restrict, async (req, res, next) => {
         const result = await discussions.remove(id)
         res.status(200).json({
             success: true,
-            message: `id = '${id}' Telah Dihapus`,
+            message: `Diskusi dengan id = '${id}' Telah Dihapus`,
             data: result
           })      
     }catch (error) {
