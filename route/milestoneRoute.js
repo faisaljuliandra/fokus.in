@@ -9,7 +9,7 @@ const restrict = passport.authenticate('jwt', {
 })
 const app = express.Router()
 
-app.get('/', restrict, async (req, res, next) => {
+app.get('/show', restrict, async (req, res, next) => {
     try {
         const { goal } = req.query
         const milestoneDisplay = await milestone.findGoal(goal)
@@ -27,7 +27,7 @@ app.get('/', restrict, async (req, res, next) => {
     }
 })
 
-app.post('/', restrict, verifyRole('admin'), async (req, res) => {
+app.post('/add', restrict, verifyRole('admin'), async (req, res) => {
     const { body } = req
     res.send(await milestone.add({
         ...body

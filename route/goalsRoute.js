@@ -9,7 +9,7 @@ const restrict = passport.authenticate('jwt', {
 })
 const app = express.Router()
 
-app.get('/', restrict, async (req, res, next) => {
+app.get('/show', restrict, async (req, res, next) => {
 
     try {
         const { category } = req.query
@@ -28,7 +28,7 @@ app.get('/', restrict, async (req, res, next) => {
     }
 })
 
-app.post('/', restrict, verifyRole('admin'), async (req, res, next) => {
+app.post('/add', restrict, verifyRole('admin'), async (req, res, next) => {
 
     try {
         const { categoriesId, namaGoal, deskripsiGoal, estimationTime } = req.body

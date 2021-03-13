@@ -9,14 +9,14 @@ const restrict = passport.authenticate('jwt', {
 })
 const app = express.Router()
 
-app.get('/', async (req, res) => {
+app.get('/list', async (req, res) => {
     const { query } = req
     res.send(await category.get({
         ...query
     }))
 })
 
-app.post('/', async (req, res) => {
+app.post('/create', async (req, res) => {
     const { body } = req
     res.send(await category.add({
         ...body
