@@ -7,7 +7,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.STRING(22)
       },
-      categoriesId: {
+      categoryId: {
         type: Sequelize.STRING(22),
         references: {
           model: 'Categories',
