@@ -10,7 +10,7 @@ const restrict = passport.authenticate('jwt', {
 const app = express.Router()
 
 
-app.get('/', async (req, res, next) => {
+app.get('/show', async (req, res, next) => {
     try {
         const { user } = req.query
         const userGoalsDisplay = await userGoal.findGoalsByUserId(user)
@@ -27,7 +27,7 @@ app.get('/', async (req, res, next) => {
     }
 })
 
-app.post('/', async (req, res, next) => {
+app.post('/add', async (req, res, next) => {
     try {
         const { userId, goalsId, startGoal, endGoal, isEnrolled } = req.body
         const userGoalsData = await userGoal.add({

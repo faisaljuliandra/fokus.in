@@ -7,13 +7,17 @@ const restrict = passport.authenticate('jwt', {
     session: false
 }) 
 const app = express.Router()
-app.get('/', restrict, verifyRole('admin'), async (req, res, next) => {
-    const { query } = req
-    const result = await userProgressMilestone.findUserGoals({
-        ...query
-    }).catch(next)
-    res.send(result)
+
+app.get('/all', restrict, verifyRole('admin'), async (req, res, next) => {
+    try {
+        const { user, goal } = req.query
+        const userGoalsDisplay = await userProgressMilestone.findUserGoals(user, goal)
+        res.send(userGoalsDisplay)
+    } catch (err) {
+        next(err);
+    }
 })
+
 app.get('/myProgress', restrict, async (req, res, next) => {
     try {
         const { user, goal } = req.query
@@ -37,7 +41,7 @@ app.get('/myProgress', restrict, async (req, res, next) => {
         next(err);
     }
 })
-app.post('/', restrict,  async (req, res) => {
+app.post('/add', restrict,  async (req, res) => {
     const { body } = req
     const result = await userProgressMilestone.add({
         ...body

@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       UserGoals.belongsTo(models.Users, { foreignKey: 'userId' })
       UserGoals.belongsTo(models.Goals, { foreignKey: 'goalsId' })
       UserGoals.belongsToMany(models.Milestones, {through: 'UserProgressMilestones', as:'progress', foreignKey: 'userGoalsId'})
+      UserGoals.hasMany(models.Notes, { foreignKey: 'userGoalsId' })
     }
   };
   UserGoals.init({
