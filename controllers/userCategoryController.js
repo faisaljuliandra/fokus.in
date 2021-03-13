@@ -1,10 +1,10 @@
-const { UserCategory } = require('../models')
+const { UserCategories } = require('../models')
 const {nanoid} = require('nanoid')
 const BaseController = require('./baseController')
 
 class UserCategoryController extends BaseController{
     constructor(){
-        super(UserCategory)
+        super(UserCategories)
     }
 }
 
