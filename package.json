@@ -6,7 +6,6 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon -L index.js",
-    "build": "sequelize db:seed --seed 20210313115654-Goals.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
