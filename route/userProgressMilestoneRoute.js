@@ -32,7 +32,8 @@ app.get('/myProgress', restrict, async (req, res, next) => {
                 return data.isFinished == true
             })
             const message = ({
-                count: `You have done ${result.length} of ${totalMilestone} milestones`,
+                done: `${result.length}`,
+                total: `${totalMilestone}`,
                 data: result
             })
             res.send(message)

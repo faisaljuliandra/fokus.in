@@ -9,6 +9,34 @@ const restrict = passport.authenticate('jwt', {
 })
 const app = express.Router()
 
+// Get All Goals
+app.get('/all', restrict, async (req, res) => {
+    const { query } = req
+    res.send(await goals.get({
+        ...query
+    }))
+})
+
+// Get All by Search Goals through User Input
+app.get('/search', restrict, async (req, res) => {
+    try {
+        const { nama } = req.query
+        const searchGoal = await goals.searchByInput(nama)
+        if (searchGoal.length == 0) {
+            return res.status(404).json({
+                message: 'Goals not found!'
+            })
+        } else {
+            return res.send(searchGoal)
+        }
+    } catch (err) {
+        next(err)
+    }
+    
+})
+
+// Get Goals based on Category Filter
+
 app.get('/show', restrict, async (req, res, next) => {
 
     try {
