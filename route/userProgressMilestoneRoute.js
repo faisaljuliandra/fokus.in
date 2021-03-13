@@ -31,9 +31,10 @@ app.get('/myProgress', restrict, async (req, res, next) => {
             const result = userGoalsDisplay.filter(function(data) {
                 return data.isFinished == true
             })
+            const done = result.length
             const message = ({
-                done: `${result.length}`,
-                total: `${totalMilestone}`,
+                done: done,
+                total: totalMilestone,
                 data: result
             })
             res.send(message)
