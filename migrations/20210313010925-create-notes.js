@@ -7,10 +7,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.STRING(22)
       },
-      userGoalsId: {
+      goalsId: {
         type: Sequelize.STRING(22),
         references: {
-          model: 'UserGoals',
+          model: 'Goals',
           key: 'id'
         }
       },

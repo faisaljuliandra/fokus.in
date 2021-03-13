@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       Goals.hasMany(models.Milestones, { foreignKey: 'goalsId' })
       Goals.belongsToMany(models.Users, { through: 'UserGoals', as: 'goals', foreignKey: 'id' })
       Goals.hasMany(models.Discussions, {foreignKey: 'goalsId'})
+      Goals.hasMany(models.Notes, { foreignKey: 'goalsId' })
     }
   };
   Goals.init({
