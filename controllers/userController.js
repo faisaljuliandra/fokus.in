@@ -108,6 +108,22 @@ class UserController extends BaseController {
       }
     }
   }
+
+  async getData(id) {
+    const result = await Users.findOne({
+      where: { id },
+      attributes: ["id", "username", "nama", "email", "jenisKelamin", "noTelp", "role"]
+    })
+    return result
+  }
+
+  async getAllData() {
+    const result = await Users.findAll({
+      attributes: ["id", "username", "nama", "email", "jenisKelamin", "noTelp", "role", "createdAt", "updatedAt"]
+    })
+    return result
+  }
+
 }
 
 module.exports = UserController
