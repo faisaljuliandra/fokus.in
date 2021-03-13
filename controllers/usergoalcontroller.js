@@ -7,17 +7,22 @@ class UserGoalsController extends BaseController{
         super(UserGoals)
     }
 
-    findGoalsByUserId(user) {
+    findGoalsByUserId(user, goal) {
         return UserGoals.findAll({
             where: {
                 isEnrolled : true
             },
-            include: {
+            include: [{
                 model: Users,
                 where: {
                     ...user && { id: user }
                 }
-            }
+            },{
+                model: Goals,
+                where: {
+                    ...goal && { id: goal }
+                }
+            }]
         })
     }
 }
