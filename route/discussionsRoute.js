@@ -11,7 +11,8 @@ const app = express.Router()
 
 app.get('/show', restrict, async (req, res, next) => {
     try{
-        const result = await discussions.get()
+        const { goal } = req.query
+        const result = await discussions.findByGoalsId(goal)
         res.status(200).json({
             success: true,
             message: 'Success',
