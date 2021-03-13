@@ -1,5 +1,5 @@
 const express = require('express')
-const MotivationController = require('../controller/motivationController')
+const MotivationController = require('../controllers/motivationController')
 const motivation = new MotivationController()
 const passport = require('../middleware/passportMiddleware')
 const verifyRole = require('../middleware/roleMiddleware')

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 'use strict';
 const {
   Model
@@ -12,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Users.belongsToMany(models.Goals, { through: 'userGoals', as: 'goals', foreignKey: 'id' })
-      Users.belongsToMany(models.Categories, { through: 'userCategory', as: 'category', foreignKey: 'id' })
+      Users.belongsToMany(models.Categories, { through: 'UserCategories', as: 'category', foreignKey: 'id' })
     }
   };
   Users.init({
@@ -28,35 +27,4 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'Users',
   });
   return Users;
-=======
-'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  class Users extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      Users.belongsToMany(models.Goals, { through: 'userGoals', as: 'goals', foreignKey: 'id' })
-      Users.belongsToMany(models.Categories, { through: 'userCategory', as: 'category', foreignKey: 'id' })
-    }
-  };
-  Users.init({
-    username: DataTypes.STRING,
-    password: DataTypes.STRING,
-    nama: DataTypes.STRING,
-    email: DataTypes.STRING,
-    jenisKelamin: DataTypes.STRING,
-    noTelp: DataTypes.STRING,
-    role: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'Users',
-  });
-  return Users;
->>>>>>> feature/categories-goals-milestone
 };
