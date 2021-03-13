@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      UserGoals.belongsTo(models.Users, { foreignKey: 'id' })
-      UserGoals.belongsTo(models.Goals, { foreignKey: 'id' })
+      UserGoals.belongsTo(models.Users, { foreignKey: 'userId' })
+      UserGoals.belongsTo(models.Goals, { foreignKey: 'goalsId' })
       UserGoals.belongsToMany(models.Milestones, {through: 'UserProgressMilestones', as:'progress', foreignKey: 'userGoalsId'})
     }
   };
@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     goalsId: DataTypes.STRING,
     startGoal: DataTypes.DATE,
     endGoal: DataTypes.DATE,
-    status: DataTypes.STRING
+    isEnrolled: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'UserGoals',
