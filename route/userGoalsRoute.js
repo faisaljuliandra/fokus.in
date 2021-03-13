@@ -1,3 +1,4 @@
+console.log("userGoalsROute")
 const express = require('express')
 const userGoalsController = require('../controllers/UserGoalsController')
 const passport = require('../middleware/passportMiddleware')
