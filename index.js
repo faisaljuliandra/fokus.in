@@ -19,12 +19,11 @@ app.use('/motivation', require('./route/motivationRoute'))
 app.use('/category', require('./route/categoryRoute'))
 app.use('/goals', require('./route/goalsRoute'))
 app.use('/milestone', require('./route/milestoneRoute'))
-console.log("index")
 app.use('/userGoals', require('./route/userGoalsRoute'))
 app.use('/progress', require('./route/userProgressMilestoneRoute'))
 app.use('/notes', require('./route/notesRoute'))
 app.use('/discussions', require('./route/discussionsRoute'))
-app.use('/tasklist', require('./route/tasklistsRoute'))
+app.use('/tasklist', require('./route/taskListsRoute'))
 
 
 app.use(function (error, req, res, next) {
