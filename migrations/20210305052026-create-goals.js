@@ -15,7 +15,7 @@ module.exports = {
         }
       },
       namaGoal: {
-        type: Sequelize.STRING(30)
+        type: Sequelize.STRING(60)
       },
       deskripsiGoal: {
         type: Sequelize.TEXT

@@ -28,9 +28,9 @@ app.get('/show', restrict, async (req, res) => {
 
 app.post('/add', restrict,  async (req, res, next) => {
     try {
-        const { userGoalsId, isiNotes } = req.body
+        const { goalsId, isiNotes } = req.body
         const userNotes = await notes.add({
-            userGoalsId,
+            goalsId,
             isiNotes
         })
         res.status(201).json({
