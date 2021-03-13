@@ -23,7 +23,7 @@ app.use('/userGoals', require('./route/userGoalsRoute'))
 app.use('/progress', require('./route/userProgressMilestoneRoute'))
 app.use('/notes', require('./route/notesRoute'))
 app.use('/discussions', require('./route/discussionsRoute'))
-app.use('/tasklist', require('./route/tasklistsRoute'))
+app.use('/tasklist', require('./route/taskListsRoute'))
 
 
 app.use(function (error, req, res, next) {
