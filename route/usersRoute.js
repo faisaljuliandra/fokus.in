@@ -1,16 +1,16 @@
 const express = require('express')
-const UserController = require('../controller/userController')
+const UserController = require('../controllers/userController')
 const verifyRole = require('../middleware/roleMiddleware')
 const user = new UserController()
 const { Users } = require('../models')
 const app = express.Router()
 
-app.get('/admin', verifyRole('admin'), async (req, res, next) => {
-  const result = await user.get().catch(next)
+app.get('/admin', verifyRole('admin'), async (req, res) => {
+  const result = await user.getAllData()
   res.send(result)
 })
 
-app.get('/', async (req, res) => {
+app.get('/all', async (req, res) => {
   res.status(401).json({
     status: "401 Unauthorized",
     messages: "Cannot get all data, please search by id"

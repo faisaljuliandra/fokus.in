@@ -1,19 +1,19 @@
 const express = require('express')
-const MotivationController = require('../controller/motivationController')
+const MotivationController = require('../controllers/motivationController')
 const motivation = new MotivationController()
 const passport = require('../middleware/passportMiddleware')
 const verifyRole = require('../middleware/roleMiddleware')
 const restrict = passport.authenticate('jwt', { session: false })
 const app = express.Router()
 
-app.get('/', async (req, res) => {
+app.get('/show', async (req, res) => {
     const { query } = req
     res.send(await motivation.get({
         ...query
     }))
 })
 
-app.post('/', restrict, verifyRole('admin'), async (req, res, next) => {
+app.post('/create', restrict, verifyRole('admin'), async (req, res, next) => {
     const { body } = req
     const result = await motivation.add({
     ...body

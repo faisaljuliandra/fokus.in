@@ -1,28 +1,31 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('UserProgressMilestones', {
+    await queryInterface.createTable('Discussions', {
       id: {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.STRING(22)
       },
-      MilestoneId: {
+      detailDiskusi: {
+        type: Sequelize.TEXT
+      },
+      diskusiDate: {
+        type: Sequelize.DATE
+      },
+      userId: {
         type: Sequelize.STRING(22),
         references: {
-          model: 'Milestones',
+          model: 'Users',
           key: 'id'
         }
       },
-      userGoalsId: {
+      goalsId: {
         type: Sequelize.STRING(22),
         references: {
-          model: 'UserGoals',
+          model: 'Goals',
           key: 'id'
         }
-      },
-      isFinished: {
-        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,
@@ -35,6 +38,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('UserProgressMilestones');
+    await queryInterface.dropTable('Discussions');
   }
 };

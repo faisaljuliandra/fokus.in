@@ -1,5 +1,5 @@
 <a href="https://fokusin.herokuapp.com/">
-        <img src="/img/fokus.inLogo.png" alt="Logo" width="250" height="97">
+        <img src="img/fokus.inLogo.png" alt="Logo" width="250" height="97">
 </a>
 
 # Fokus.in App
