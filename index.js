@@ -21,7 +21,7 @@ app.use('/goals', require('./route/goalsRoute'))
 app.use('/milestone', require('./route/milestoneRoute'))
 app.use('/userGoals', require('./route/userGoalsRoute'))
 app.use('/progress', require('./route/userProgressMilestoneRoute'))
-
+app.use('/notes', require('./route/notesRoute'))
 
 
 
