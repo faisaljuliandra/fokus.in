@@ -1,0 +1,86 @@
+'use strict';
+
+const { nanoid } = require("nanoid");
+
+module.exports = {
+  up: async (queryInterface, Sequelize) => {
+    const milestones = await queryInterface.sequelize.query('SELECT "Goals"."id", "Goals"."categoriesId", "Goals"."namaGoal", "Goals"."deskripsiGoal", "Goals"."estimationTime" AS "Goals.id" FROM "Goals" AS "Goals";');
+    const milestonesRows = milestones[0];
+    await queryInterface.bulkInsert('Milestones', [
+      { id: nanoid(), goalsId: milestonesRows[8].id, detailGoal: 'Temukan Masalah yang Dihadapi Pasar', referensi: 'Buku, Riset, Google', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[8].id, detailGoal: 'Riset Pasar', referensi: 'Buku, Riset, Google', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[8].id, detailGoal: 'Analisis Kompetitor', referensi: 'Buku, Riset, Google', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[8].id, detailGoal: 'Analisis Kompetitor', referensi: 'Buku, Riset, Google', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[8].id, detailGoal: 'Tentukan Target Pasar', referensi: 'Buku, Riset, Google', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[8].id, detailGoal: 'Tentukan supplier atas produk', referensi: 'Buku, Riset, Google', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[8].id, detailGoal: 'Buat Produk', referensi: 'Buku, Riset, Google', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[8].id, detailGoal: 'Buat Produk', referensi: 'Buku, Riset, Google', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[8].id, detailGoal: 'Pasarkan Produk dengan Strategi yang Tepat', referensi: 'Buku, Riset, Google', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[9].id, detailGoal: 'Mulai dari baca buku mengenai investasi saham untuk pemula', referensi: 'Buku, Akun Instagram Saham dan Investasi, Online Course, Youtube', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[9].id, detailGoal: 'Belajar dasar-dasar mengenai pasar modal dan saham', referensi: 'Buku, Akun Instagram Saham dan Investasi, Online Course, Youtube', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[9].id, detailGoal: 'Tentukan tujuan berinvestasi', referensi: 'Buku, Akun Instagram Saham dan Investasi, Online Course, Youtube', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[9].id, detailGoal: 'Belajar analisa fundamental', referensi: 'Buku, Akun Instagram Saham dan Investasi, Online Course, Youtube', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[9].id, detailGoal: 'Belajar analisa teknikal', referensi: 'Buku, Akun Instagram Saham dan Investasi, Online Course, Youtube', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[9].id, detailGoal: 'Buat akun sekuritas', referensi: 'Buku, Akun Instagram Saham dan Investasi, Online Course, Youtube', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[9].id, detailGoal: 'Memilih emiten sesuai dengan analisa', referensi: 'Buku, Akun Instagram Saham dan Investasi, Online Course, Youtube', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[9].id, detailGoal: 'Mulai membeli saham minimal 1 lot (lembar)', referensi: 'Buku, Akun Instagram Saham dan Investasi, Online Course, Youtube', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[9].id, detailGoal: 'Belajar psikologi dalam investasi saham', referensi: 'Buku, Akun Instagram Saham dan Investasi, Online Course, Youtube', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[9].id, detailGoal: 'Rutin membeli saham sesuai kemampuan', referensi: 'Buku, Akun Instagram Saham dan Investasi, Online Course, Youtube', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[3].id, detailGoal: 'Memahami siklus dari produksi aplikasi ( dari perencanaan sampai publikasi)', referensi: 'Dokumentasi, Online Course, Mengikuti Bootcamp, Youtube, Buku', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[3].id, detailGoal: 'Menguasai programming tools', referensi: 'Dokumentasi, Online Course, Mengikuti Bootcamp, Youtube, Buku', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[3].id, detailGoal: 'Menguasai programming tools', referensi: 'Dokumentasi, Online Course, Mengikuti Bootcamp, Youtube, Buku', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[3].id, detailGoal: 'Rencanakan dan desain aplikasi untuk pengembangan aktual', referensi: 'Dokumentasi, Online Course, Mengikuti Bootcamp, Youtube, Buku', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[3].id, detailGoal: 'Selesaikan pengembangan app dan beta testing', referensi: 'Dokumentasi, Online Course, Mengikuti Bootcamp, Youtube, Buku', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[3].id, detailGoal: 'Selesaikan debugging mobile pp', referensi: 'Dokumentasi, Online Course, Mengikuti Bootcamp, Youtube, Buku', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[3].id, detailGoal: 'Daftarkan aplikasi ke app store atau playstore', referensi: 'Dokumentasi, Online Course, Mengikuti Bootcamp, Youtube, Buku', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[4].id, detailGoal: 'Brainstorm ide startup', referensi: 'Berita, Artikel, Buku', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[4].id, detailGoal: 'Buat rencana detail ide business plan', referensi: 'Berita, Artikel, Buku', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[4].id, detailGoal: 'Temukan partner untuk mengembangkan start up', referensi: 'Berita, Artikel, Buku', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[4].id, detailGoal: 'Lakukan market research', referensi: 'Berita, Artikel, Buku', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[4].id, detailGoal: 'Buat implementation plan', referensi: 'Berita, Artikel, Buku', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[4].id, detailGoal: 'Buat basic product prototype', referensi: 'Berita, Artikel, Buku', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[4].id, detailGoal: 'Lakukan iterasi secara berkelanjutkan pada produk yng dikembangkan', referensi: 'Berita, Artikel, Buku', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[5].id, detailGoal: 'Mempelajari HTML, merupakan markup language yang digunakan sebagai dasar dari front end developing', referensi: 'Website, Online Course, Bootcamp, Youtube', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[5].id, detailGoal: 'Mempelajari CSS, merupakan program yang digunakan front end developer untuk membangun desain dari sebuah website', referensi: 'Website, Online Course, Bootcamp, Youtube', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[5].id, detailGoal: 'Mempelajari JavaScript, bahasa pemrograman yang digunakan front end developer untuk menciptakan interaksi', referensi: 'Website, Online Course, Bootcamp, Youtube', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[5].id, detailGoal: 'Mempelajari tambahan pustaka (library) JavaScript seperti React, jQuery, dan lain-lain', referensi: 'Website, Online Course, Bootcamp, Youtube', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[5].id, detailGoal: 'Mempelajari GitHub atau GitLab, untuk kolaborasi kode pemrograman dengan rekan kerja sesama front end developer', referensi: 'Website, Online Course, Bootcamp, Youtube', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[0].id, detailGoal: 'Belajar menggunakan design tool untuk UX (Adobe XD/Figma/Sketch)', referensi: 'Website, Online Course, Youtube, Komunitas', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[0].id, detailGoal: 'Pelajari Design Proses dalam User Experience (Design thinking)', referensi: 'Website, Online Course, Youtube, Komunitas', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[0].id, detailGoal: 'Pelajari UX/UI di online course', referensi: 'Website, Online Course, Youtube, Komunitas', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[0].id, detailGoal: 'Gabung komunitas UI/UX design', referensi: 'Website, Online Course, Youtube, Komunitas', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[0].id, detailGoal: 'Analisa dan redesign UX design aplikasi yang sering dipakai', referensi: 'Website, Online Course, Youtube, Komunitas', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[0].id, detailGoal: 'Buat portofolio ', referensi: 'Website, Online Course, Youtube, Komunitas', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[0].id, detailGoal: 'Buat akun linkedIn dengan fokus UX/UI', referensi: 'Website, Online Course, Youtube, Komunitas', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[0].id, detailGoal: 'Magang atau cari pengalaman kerja di bidang UI/UX', referensi: 'Website, Online Course, Youtube, Komunitas', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[0].id, detailGoal: 'Mulai karir sebagai professional UI/UX Designer', referensi: 'Website, Online Course, Youtube, Komunitas', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[2].id, detailGoal: 'Temukan niche yang sesuai ', referensi: 'Riset, Youtube, Buku', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[2].id, detailGoal: 'Buat youtube channel', referensi: 'Riset, Youtube, Buku', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[2].id, detailGoal: 'Beli peralatan yang dibutuhkan untuk produksi video', referensi: 'Riset, Youtube, Buku', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[2].id, detailGoal: 'Rekam video dengan kamera yang kamu punya', referensi: 'Riset, Youtube, Buku', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[2].id, detailGoal: 'Belajar mengedit video dari video yang sudah direkam', referensi: 'Riset, Youtube, Buku', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[2].id, detailGoal: 'Posting video pertama di youtube channel', referensi: 'Riset, Youtube, Buku', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[2].id, detailGoal: 'Buat jadwal untuk publish video', referensi: 'Riset, Youtube, Buku', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[2].id, detailGoal: 'Rutin upload video di youtube sesuai jadwal', referensi: 'Riset, Youtube, Buku', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[2].id, detailGoal: 'Aktif berinteraksi dengan audience', referensi: 'Riset, Youtube, Buku', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[2].id, detailGoal: 'Riset tren baru yang berhubungan dengan youtube channel kamu', referensi: 'Riset, Youtube, Buku', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[6].id, detailGoal: 'Pelajari resep makanan yang ingin dimasak', referensi: 'Website, Youtube, Buku, Majalah', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[6].id, detailGoal: 'Baca buku masakan atau artikel terkait skill/resep', referensi: 'Website, Youtube, Buku, Majalah', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[6].id, detailGoal: 'Beli peralatan memasak/bahan masakan yang dibutuhkan', referensi: 'Website, Youtube, Buku, Majalah', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[6].id, detailGoal: 'Coba memasak makanan yang simpel untuk diri sendiri', referensi: 'Website, Youtube, Buku, Majalah', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[6].id, detailGoal: 'Kuasai 1 resep masakan', referensi: 'Website, Youtube, Buku, Majalah', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[6].id, detailGoal: 'Eksplorasi dan coba resep masakan lain', referensi: 'Website, Youtube, Buku, Majalah', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[6].id, detailGoal: 'Coba membuat masakan untuk keluarga', referensi: 'Website, Youtube, Buku, Majalah', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[7].id, detailGoal: 'Biasakan diri untuk terpapar bahasa inggris', referensi: 'Buku, Youtube, Instagram, Online Course, Tempat Les', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[7].id, detailGoal: 'Pelajari basic grammar bahasa inggris', referensi: 'Buku, Youtube, Instagram, Online Course, Tempat Les', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[7].id, detailGoal: 'Pelajari kata-kata yang sering digunakan dalam bahasa inggris', referensi: 'Buku, Youtube, Instagram, Online Course, Tempat Les', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[7].id, detailGoal: 'Baca novel berbahasa inggris', referensi: 'Buku, Youtube, Instagram, Online Course, Tempat Les', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[7].id, detailGoal: 'Tonton film berbahasa inggris tanpa terjemahan', referensi: 'Buku, Youtube, Instagram, Online Course, Tempat Les', createdAt: new Date(), updatedAt: new Date() },
+      { id: nanoid(), goalsId: milestonesRows[7].id, detailGoal: 'Tonton online course atau youtube mengenai pembelajaran bahasa inggris', referensi: 'Buku, Youtube, Instagram, Online Course, Tempat Les', createdAt: new Date(), updatedAt: new Date() }
+    ])
+  },
+
+  down: async (queryInterface, Sequelize) => {
+    await queryInterface.bulkDelete('Milestones', null, {});
+  }
+};
