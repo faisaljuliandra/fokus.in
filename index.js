@@ -10,7 +10,7 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(express.static('views'))
 
-
+console.log("tes")
 app.use('/', require('./route/indexRoute'))
 app.use('/', require('./route/authRoute'))
 app.use('/', require('./route/errorRoute'))
