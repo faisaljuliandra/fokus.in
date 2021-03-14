@@ -1,11 +1,11 @@
-const { UserProgressMilestones, UserGoals } = require('../models')
+const { UserProgressMilestones, UserGoals, Milestones } = require('../models')
 const { nanoid } = require('nanoid')
 const BaseController = require('./baseController')
 class UserProgressMilestoneController extends BaseController {
     constructor() {
         super(UserProgressMilestones)
     }
-    findUserGoals(user, goal) {
+    findUserGoals(user, goal, milestone) {
         return UserProgressMilestones.findAll({
             include: [{
                 model: UserGoals,
@@ -16,6 +16,11 @@ class UserProgressMilestoneController extends BaseController {
                 model: UserGoals,
                 where: {
                     ...goal && {goalsId: goal}
+                }
+            },{
+                model: Milestones,
+                where: {
+                    ...milestone && {id: milestone} 
                 }
             }]
         })
