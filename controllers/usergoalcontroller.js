@@ -26,23 +26,23 @@ class UserGoalsController extends BaseController{
             }]
         })
     }
+
+
+    countTopGoals() {
+        return UserGoals.findAll({
+            attributes: [[sequelize.fn('count', sequelize.col('UserGoals.id')), 'count']],
+            order: sequelize.literal('count DESC'),
+            where: {
+                isEnrolled: true
+            },
+            include: [{
+                attributes: ['namaGoal', 'id'],
+                model: Goals
+            }],
+            group: ['Goal.id', 'Goal.namaGoal'],
+            limit: 3
+        });
+    }
+
 }
-
-countTopGoals() {
-    return UserGoals.findAll({
-        attributes: [[sequelize.fn('count', sequelize.col('UserGoals.id')), 'count']],
-        order: sequelize.literal('count DESC'),
-        where: {
-            isEnrolled: true
-        },
-        include: [{
-            attributes: ['namaGoal', 'id'],
-            model: Goals
-        }],
-        group: ['Goal.id', 'Goal.namaGoal'],
-        limit: 3
-    });
-}
-
-
 module.exports = UserGoalsController
