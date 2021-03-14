@@ -13,7 +13,6 @@ app.use(express.static('views'))
 
 app.use('/', require('./route/indexRoute'))
 app.use('/', require('./route/authRoute'))
-app.use('/', require('./route/errorRoute'))
 app.use('/user', restrict, require('./route/usersRoute'))
 app.use('/motivation', require('./route/motivationRoute'))
 app.use('/category', require('./route/categoryRoute'))
@@ -24,7 +23,7 @@ app.use('/progress', require('./route/userProgressMilestoneRoute'))
 app.use('/notes', require('./route/notesRoute'))
 app.use('/discussions', require('./route/discussionsRoute'))
 app.use('/tasklist', require('./route/taskListsRoute'))
-
+app.use('/', require('./route/errorRoute'))
 
 app.use(function (error, req, res, next) {
     res.send(error)
