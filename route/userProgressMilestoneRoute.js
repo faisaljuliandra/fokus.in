@@ -8,10 +8,10 @@ const restrict = passport.authenticate('jwt', {
 }) 
 const app = express.Router()
 
-app.get('/all', restrict, verifyRole('admin'), async (req, res, next) => {
+app.get('/all', restrict, async (req, res, next) => {
     try {
-        const { user, goal } = req.query
-        const userGoalsDisplay = await userProgressMilestone.findUserGoals(user, goal)
+        const { user, goal, milestone } = req.query
+        const userGoalsDisplay = await userProgressMilestone.findUserGoals(user, goal, milestone)
         res.send(userGoalsDisplay)
     } catch (err) {
         next(err);
@@ -24,7 +24,7 @@ app.get('/myProgress', restrict, async (req, res, next) => {
         const userGoalsDisplay = await userProgressMilestone.findUserGoals(user, goal)
         if (userGoalsDisplay.length == 0) {
             return res.status(303).json({
-                message: 'Milestone is empty! Please check another milestone',
+                done: 0
             })
         } else if (userGoalsDisplay) {
             const totalMilestone = userGoalsDisplay.length
