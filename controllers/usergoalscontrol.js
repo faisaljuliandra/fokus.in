@@ -7,7 +7,7 @@ class UserGoalsController extends BaseController{
         super(UserGoals)
     }
 
-    findGoalsByUserId(user) {
+    findGoalsByUserId(user, goal) {
         return UserGoals.findAll({
             where: {
                 isEnrolled : true

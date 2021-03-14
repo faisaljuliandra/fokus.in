@@ -12,7 +12,7 @@ const app = express.Router()
 
 app.get('/show', async (req, res, next) => {
     try {
-        const { user } = req.query
+        const { user, goal } = req.query
         const userGoalsDisplay = await userGoal.findGoalsByUserId(user)
         if (userGoalsDisplay.length == 0) {
             return res.status(303).json({
