@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Milestones.belongsTo(models.Goals, { foreignKey: 'goalsId' })
-      Milestones.belongsToMany(models.UserGoals, {through: 'userProgressMilestones', as:'progress', foreignKey: 'MilestoneId'})
+      Milestones.belongsToMany(models.UserGoals, {through: 'UserProgressMilestones', as:'progress', foreignKey: 'MilestoneId'})
     }
   };
   Milestones.init({
