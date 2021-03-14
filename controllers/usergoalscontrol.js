@@ -12,12 +12,17 @@ class UserGoalsController extends BaseController{
             where: {
                 isEnrolled : true
             },
-            include: {
+            include: [{
                 model: Users,
                 where: {
                     ...user && { id: user }
                 }
-            }
+            }, {
+                model: Goals,
+                where: {
+                    ...goal && {namaGoal: goal}
+                }
+            }]
         })
     }
 }
