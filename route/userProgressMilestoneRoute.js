@@ -24,7 +24,7 @@ app.get('/myProgress', restrict, async (req, res, next) => {
         const userGoalsDisplay = await userProgressMilestone.findUserGoals(user, goal)
         if (userGoalsDisplay.length == 0) {
             return res.status(303).json({
-                message: 'Milestone is empty! Please check another milestone',
+                done: 0,
             })
         } else if (userGoalsDisplay) {
             const totalMilestone = userGoalsDisplay.length
