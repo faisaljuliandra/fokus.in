@@ -17,10 +17,10 @@ class UserProgressMilestoneController extends BaseController {
                 where: {
                     ...goal && {goalsId: goal}
                 }
-            },{
+            }, {
                 model: Milestones,
                 where: {
-                    ...milestone && {id: milestone} 
+                    ...milestone && {id: milestone}
                 }
             }]
         })

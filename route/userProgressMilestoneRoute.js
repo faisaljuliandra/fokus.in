@@ -10,7 +10,7 @@ const app = express.Router()
 
 app.get('/all', restrict, async (req, res, next) => {
     try {
-        const { user, goal , milestone} = req.query
+        const { user, goal, milestone } = req.query
         const userGoalsDisplay = await userProgressMilestone.findUserGoals(user, goal, milestone)
         res.send(userGoalsDisplay)
     } catch (err) {
@@ -24,16 +24,17 @@ app.get('/myProgress', restrict, async (req, res, next) => {
         const userGoalsDisplay = await userProgressMilestone.findUserGoals(user, goal)
         if (userGoalsDisplay.length == 0) {
             return res.status(303).json({
-                done: 0,
+                done: 0
             })
         } else if (userGoalsDisplay) {
             const totalMilestone = userGoalsDisplay.length
             const result = userGoalsDisplay.filter(function(data) {
                 return data.isFinished == true
             })
+            const done = result.length
             const message = ({
-                done: `${result.length}`,
-                total: `${totalMilestone}`,
+                done: done,
+                total: totalMilestone,
                 data: result
             })
             res.send(message)

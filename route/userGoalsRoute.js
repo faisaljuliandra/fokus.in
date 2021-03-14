@@ -1,5 +1,5 @@
 const express = require('express')
-const userGoalsController = require('../controllers/usergoalcontroller')
+const userGoalsController = require('../controllers/UserGoalsController')
 const passport = require('../middleware/passportMiddleware')
 const verifyRole = require('../middleware/roleMiddleware')
 
@@ -12,8 +12,8 @@ const app = express.Router()
 
 app.get('/show', async (req, res, next) => {
     try {
-        const { user, goal } = req.query
-        const userGoalsDisplay = await userGoal.findGoalsByUserId(user, goal)
+        const { user } = req.query
+        const userGoalsDisplay = await userGoal.findGoalsByUserId(user)
         if (userGoalsDisplay.length == 0) {
             return res.status(303).json({
                 message: `User hasn't take the goal yet! Try to add the new goal!`,
@@ -56,7 +56,7 @@ app.put('/:id', restrict,  async (req, res) => {
 app.delete('/:id', restrict, verifyRole('admin'), async (req, res) => {
     const { params } = req
     await userGoal.remove(params.id)
-    res.send('User Goals DataSuccessfully deleted!')
+    res.send('User Goals Data Successfully deleted!')
 })
 
 module.exports = app

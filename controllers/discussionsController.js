@@ -1,4 +1,4 @@
-const {Discussions, Goals} = require('../models')
+const {Discussions, Goals, Users} = require('../models')
 const {nanoid} = require('nanoid')
 const BaseController = require('./baseController')
 
@@ -7,17 +7,21 @@ class DiscussionsController extends BaseController{
         super(Discussions)
     }
 
-    findByGoalsId(goal) {
+    findByGoalsId(goal, user) {
         return Discussions.findAll({
-            include: {
+            include: [{
                 model: Goals,
                 where: {
                     ...goal && { id: goal }
                 }
-            }
+            }, {
+                model: Users,
+                where: {
+                    ...user && { id: user }
+                }
+            }]
         })
     }
-
 }
 
 module.exports = DiscussionsController
