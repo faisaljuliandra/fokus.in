@@ -9,6 +9,12 @@ const restrict = passport.authenticate('jwt', {
 })
 const app = express.Router()
 
+app.get('/:id', restrict, async (req, res, next) => {
+    const id = req.params.id
+    const result = await goals.get({ id }).catch(next)
+    res.send(result)
+})
+
 // Get All Goals
 app.get('/all', restrict, async (req, res) => {
     const { query } = req

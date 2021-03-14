@@ -9,8 +9,8 @@ const restrict = passport.authenticate('jwt', {
 })
 const app = express.Router()
 
-
-app.get('/show', async (req, res, next) => {
+//Get user goals data based on user id and goal id 
+app.get('/show', restrict,  async (req, res, next) => {
     try {
         const { user, goal } = req.query
         const userGoalsDisplay = await userGoal.findGoalsByUserId(user, goal)
@@ -23,11 +23,24 @@ app.get('/show', async (req, res, next) => {
             return res.status(200).send(userGoalsDisplay)
         }
     } catch (err) {
+        next(err)
+    }
+})
+
+app.get('/topGoals', restrict, async (req, res, next) => {
+    try {
+        // console.log("Sebelum user goal tampil");
+        // console.log(userGoal);
+        const userGoalsDisplay = await userGoal.countTopGoals()
+        console.log("hasil: ", userGoalsDisplay);
+        res.send(userGoalsDisplay)
+
+    } catch (err) {
         next(err);
     }
 })
 
-app.post('/add', async (req, res, next) => {
+app.post('/add', restrict, async (req, res, next) => {
     try {
         const { userId, goalsId, startGoal, endGoal, isEnrolled } = req.body
         const userGoalsData = await userGoal.add({
